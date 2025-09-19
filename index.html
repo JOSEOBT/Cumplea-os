@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>🎂 Feliz Cumpleaños Javier Serrano</title>
+
+  <link rel="stylesheet" href="./style.css">
+  
+  <!-- Bootstrap (solo para botones y utilidades) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+   <!------ <div class="block-audio">
+      <audio class="exp" src=""></audio>
+      <audio class="launch" src=""></audio>
+    </div>
+    --->
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+
+  <style>
+    /* ----------------- Reset y fondo ----------------- */
+    :root{
+      --bg1: #f6f1ff;
+      --bg2: #fff6f0;
+      --accent: #ff9f1c;
+      --cake-base: #8b4f2f;
+      --icing: #ff6fa3;
+      --shadow: rgba(0,0,0,0.12);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(circle at 10% 20%, #fff5f7 0%, var(--bg1) 30%, var(--bg2) 100%);
+      color:#222;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:30px;
+    }
+    /*-----------------------Fuegos Artificiales----------------*/
+    
+    /* ----------------- Contenedor tarjeta ----------------- */
+    .card-wrap{
+      width:960px;
+      max-width:95vw;
+      min-height:560px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(250,250,255,0.95));
+      border-radius:20px;
+      box-shadow: 0 20px 50px rgba(40,40,70,0.12);
+      padding:28px;
+      overflow:hidden;
+      position:relative;
+      border: 1px solid rgba(0,0,0,0.03);
+      z-index: 1;
+    }
+
+    header.top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:8px;
+    }
+    header .title{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .badge-40{
+      font-weight:700;
+      padding:10px 16px;
+      border-radius:10px;
+      background: linear-gradient(90deg,#ffd97a,#ff9f6a);
+      color:#3b1f00;
+      box-shadow: 0 6px 18px rgba(255,160,80,0.18);
+      font-size:1.1rem;
+    }
+    h1{
+      margin:0;
+      font-size:1.6rem;
+      letter-spacing:0.4px;
+    }
+    p.lead{
+      margin:0;
+      color:#4b4b4b;
+      opacity:0.9;
+    }
+
+    /* ----------------- Stage / escenografía ----------------- */
+    .stage{
+      display:flex;
+      gap:28px;
+      margin-top:18px;
+    }
+
+    /* left: cake area */
+    .scene{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      perspective:1100px; /* para 3D */
+      padding:10px;
+    }
+
+    /* cake 3D construido con capas */
+    .cake-3d{
+      width:380px;
+      transform-style:preserve-3d;
+      transform: rotateX(12deg) rotateY(-12deg);
+      transition: transform .6s cubic-bezier(.2,.9,.3,1);
+      position:relative;
+    }
+    .cake-3d:hover{ transform: rotateX(8deg) rotateY(-6deg) translateY(-6px) scale(1.02) }
+
+    /* capas (bottom -> top) */
+    .layer{
+      width:100%;
+      height:80px;
+      border-radius:30px;
+      position:relative;
+      margin-bottom: -18px;
+      box-shadow: 0 16px 30px var(--shadow), inset 0 -12px rgba(0,0,0,0.06);
+      transform-origin:center center;
+    }
+
+    .layer.bottom{ background: linear-gradient(180deg, #6b3b24, #8b4f2f); height:88px; transform: translateZ(-40px) scaleY(1.02); }
+    .layer.middle{ background: linear-gradient(180deg, #7a3f2a, #b06a3f); height:78px; transform: translateZ(-10px); }
+    .layer.top{ background: linear-gradient(180deg, #b86c46, #ff8b63); height:66px; transform: translateZ(18px); border-radius:26px; }
+
+    /* glaseado encima (pseudo capa) */
+    .icing{
+      position:absolute;
+      left:8%;
+      right:8%;
+      top:18%;
+      height:120px;
+      background: linear-gradient(180deg, #ff9fc6,#ff6fa3);
+      border-radius:50% 50% 110px 110px;
+      box-shadow: 0 10px 30px rgba(255,110,150,0.12);
+      z-index:50;
+      transform: translateZ(40px) rotateX(6deg);
+      overflow:hidden;
+    }
+    /* drip (gotas de glaseado) */
+    .drip{
+      position:absolute;
+      bottom:0;
+      width:40px;
+      height:80px;
+      background: inherit;
+      border-radius:40px;
+      opacity:0.95;
+      box-shadow: inset 0 -8px rgba(0,0,0,0.08);
+    }
+    .drip.d1{ left:12%; height:74px; transform: rotate(-6deg) scale(.95); }
+    .drip.d2{ left:34%; height:86px; transform: rotate(6deg) scale(1.05);}
+    .drip.d3{ right:22%; height:68px; transform: rotate(-4deg) scale(.92); }
+    .drip.d4{ right:6%; height:82px; transform: rotate(8deg) scale(1.03); }
+
+    /* Candle row (posicionado sobre la parte superior) */
+    .candles{
+      position:absolute;
+      top:12%;
+      left:50%;
+      transform: translateX(-50%) translateZ(70px);
+      display:flex;
+      gap:14px;
+      z-index:80;
+    }
+    .candle{
+      width:14px;
+      height:58px;
+      background: #fff;
+      border-radius:4px;
+      position:relative;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      overflow:visible;
+    }
+    .candle::after{
+      content:"";
+      position:absolute;
+      bottom:-8px;
+      left:50%;
+      transform:translateX(-50%);
+      width:20px;
+      height:8px;
+      background: rgba(0,0,0,0.06);
+      border-radius:50%;
+    }
+
+    .stripe{ position:absolute; left:0; right:0; height:6px; top:14px; border-radius:3px; opacity:0.14 }
+    .s1{ background: linear-gradient(90deg,#ffc107,#ff6f00); transform: rotate(-14deg); }
+    .s2{ background: linear-gradient(90deg,#67e8f9,#06b6d4); transform: rotate(6deg); left:auto; right:0; }
+    .s3{ background: linear-gradient(90deg,#fbcfe8,#fb7185); transform: rotate(4deg); left:18%;}
+
+    /* flame */
+    .flame{
+      width:18px;
+      height:28px;
+      border-radius:50% 50% 50% 50%;
+      background: radial-gradient(circle at 35% 35%, #fff276 0%, #ffdf5c 10%, #ff8c2b 45%, #d84a1e 70%);
+      position:relative;
+      top:-20px;
+      filter: drop-shadow(0 6px 10px rgba(255,120,40,0.12));
+      animation: flicker 140ms infinite alternate;
+      transform-origin: bottom center;
+    }
+    @keyframes flicker {
+      from{ transform: scale(1) translateY(0) rotate(-2deg) }
+      to{ transform: scale(1.08) translateY(-2px) rotate(2deg) }
+    }
+
+    /* smoke puff (al apagar) */
+    .smoke{
+      position:absolute;
+      width:12px; height:12px;
+      border-radius:50%;
+      background:rgba(120,120,120,0.18);
+      filter:blur(4px);
+      transform: translateY(0);
+      animation: puff 1s forwards ease-out;
+      z-index:90;
+    }
+    @keyframes puff{
+      0%{ transform: translateY(0) scale(0.6); opacity:0.9 }
+      100%{ transform: translateY(-80px) scale(2.2); opacity:0 }
+    }
+
+    /* right: controls area */
+    .controls{
+      width:380px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      padding:18px;
+      align-items:center;
+      justify-content:center;
+    }
+    .panel{
+      width:100%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.55));
+      border-radius:12px;
+      padding:16px;
+      box-shadow: 0 8px 20px rgba(60,60,90,0.06);
+      border:1px solid rgba(0,0,0,0.03);
+    }
+    .big-btn{
+      width:100%;
+      padding:14px 18px;
+      font-weight:700;
+      border-radius:10px;
+    }
+
+    /* confetti canvas (absolute layer) */
+    #confettiCanvas{
+      position:absolute;
+      left:0; top:0; right:0; bottom:0;
+      pointer-events:none;
+      z-index:120;
+    }
+
+    /* small helpers */
+    .small{
+      font-size:0.9rem;
+      color:#333;
+    }
+    .muted{ color:#666; font-size:0.88rem; }
+    .controls .row{ display:flex; gap:10px; }
+
+    /* responsive */
+    @media (max-width:860px){
+      .stage{ flex-direction:column; gap:12px; }
+      .controls{ width:100% }
+      .cake-3d{ width:320px }
+    }
+  </style>
+</head>
+<body>
+  <div class="card-wrap">
+    <header class="top">
+      <div class="title">
+        <div class="badge-40">40</div>
+        <div>
+          <h1>¡Javier Serrano! 🎉</h1>
+          <p class="lead">Que sigan las victorias en el sector petrolero y en la vida</p>
+        </div>
+      </div>
+
+     <!--- <div class="small muted">Compartir: <a id="shareLink" href="#" class="muted">Copiar link</a></div> -->
+    </header>
+
+    <main class="stage">
+      <!-- SCENE -->
+      <section class="scene">
+        <div class="cake-3d" id="cake">
+          <!-- bottom layer -->
+          <div class="layer bottom"></div>
+
+          <!-- middle layer -->
+          <div class="layer middle"></div>
+
+          <!-- top layer -->
+          <div class="layer top"></div>
+
+          <!-- icing (3D-ish) -->
+          <div class="icing" aria-hidden="true">
+            <div class="drip d1"></div>
+            <div class="drip d2"></div>
+            <div class="drip d3"></div>
+            <div class="drip d4"></div>
+          </div>
+
+          <!-- candles row -->
+          <div class="candles" id="candles">
+            <!-- 6 candels for show -->
+            <div class="candle"><div class="stripe s1"></div><div class="flame"></div></div>
+            <div class="candle"><div class="stripe s2"></div><div class="flame"></div></div>
+            <div class="candle"><div class="stripe s3"></div><div class="flame"></div></div>
+            <div class="candle"><div class="stripe s1"></div><div class="flame"></div></div>
+            <div class="candle"><div class="stripe s2"></div><div class="flame"></div></div>
+            <div class="candle"><div class="stripe s3"></div><div class="flame"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTROLS -->
+      <aside class="controls">
+        <div class="panel">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <strong>Velas</strong>
+              <div class="muted small">Apagá o encendé con estilo</div>
+            </div>
+            <div>
+              <button id="toggleBtn" class="btn btn-outline-dark">🕯️ Apagar velas</button>
+            </div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div style="display:flex; gap:8px;">
+            <button id="playBtn" class="btn btn-warning big-btn">▶️ Reproducir rola retro</button>
+            <button id="confettiBtn" class="btn btn-primary big-btn">🎊 Lanzar confeti</button>
+          </div>
+
+          <div style="height:10px"></div>
+
+          <div style="display:flex; gap:8px;">
+            <input id="uploadAudio" type="file" accept="audio/*" class="form-control" />
+          </div>
+          <div class="muted small" style="margin-top:8px">O subí tu mp3 y lo usas con el botón <em><b>Reproducir</b></em>.</div>
+        </div>
+
+        <div class="panel">
+          <div><strong>Mensaje</strong></div>
+          <div style="height:10px"></div>
+          <textarea id="msg"  style="font-size: 17px;" rows="6" class="form-control" placeholder="Escribe un mensaje personalizado...">¡Hoy es un día especial que trae consigo momentos inolvidables. No pierdas tu esencia por malos momentos; tus compañeros te deseamos un feliz cumpleaños, cargado de muchas bendiciones.!</textarea>
+          <div style="height:8px"></div>
+          <button id="showMsg" class="btn btn-outline-success">📢 Mostrar mensaje</button>
+		  
+        </div>
+
+        <div class="panel small muted" style="text-align: center;"  >
+          😶‍🌫️ <code>Continuará</code> 😶‍🌫️
+        </div>
+      </aside>
+    </main>
+<canvas id="canvas"></canvas>
+    <canvas id="confettiCanvas" width="1600" height="900"></canvas>
+  </div>
+
+  <!-- ----------------- SCRIPTS ----------------- -->
+  <script>
+    $(function () {
+	var canvas = $("#canvas")[0];
+	canvas.width = $(window).width();
+	canvas.height = $(window).height();
+	var ctx = canvas.getContext("2d");
+
+	// resize
+	$(window).on("resize", function () {
+		canvas.width = $(window).width();
+		canvas.height = $(window).height();
+		ctx.fillStyle = "#ffffff";
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+		center = { x: canvas.width / 2, y: canvas.height / 2 };
+	});
+
+	// init
+	ctx.fillStyle = "#ffffff";
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	// objects
+	var listFire = [];
+	var listFirework = [];
+	var listText = [];
+	var listSpecial = [];
+	var listSpark = [];
+	var lights = [];
+	var fireNumber = 10;
+	var center = { x: canvas.width / 2, y: canvas.height / 2 };
+	var range = 100;
+	var fired = 0;
+	var onHold = 0;
+	var supprise = false;
+	var textIndex = 0;
+	var actions = [
+		makeDoubleFullCircleFirework,
+		makePlanetCircleFirework,
+		makeFullCircleFirework,
+		makeDoubleCircleFirework,
+		makeHeartFirework,
+		makeCircleFirework,
+		makeRandomFirework
+	];
+	for (var i = 0; i < fireNumber; i++) {
+		var fire = {
+			x: (Math.random() * range) / 2 - range / 4 + center.x,
+			y: Math.random() * range * 2.5 + canvas.height,
+			size: Math.random() + 0.5,
+			fill: "#ff3",
+			vx: Math.random() - 0.5,
+			vy: -(Math.random() + 4),
+			ax: Math.random() * 0.06 - 0.03,
+			delay: Math.round(Math.random() * range) + range * 4,
+			hold: false,
+			alpha: 1,
+			far: Math.random() * range + (center.y - range)
+		};
+		fire.base = {
+			x: fire.x,
+			y: fire.y,
+			vx: fire.vx,
+			vy: fire.vy
+		};
+		//
+		listFire.push(fire);
+		// play sound
+		playLaunchSound();
+	}
+	// define array of sound
+	var listExpSound = $("audio.exp");
+	var listLaunchSound = $("audio.launch");
+
+	// define array position of text
+	var textString = "javierserrano";
+	var textMatrix = [
+		4.5,
+		0,
+		5.5,
+		0,
+		6.5,
+		0,
+		7.5,
+		0,
+		8.5,
+		0,
+		0,
+		1,
+		1,
+		1,
+		2,
+		1,
+		3,
+		1,
+		4,
+		1,
+		6,
+		1,
+		7,
+		1,
+		8,
+		1,
+		10,
+		1,
+		11,
+		1,
+		12,
+		1,
+		13,
+		1,
+		5,
+		2,
+		6,
+		2,
+		7,
+		2,
+		8,
+		2
+	];
+	var chars = {
+		j: [
+			0,
+			0,
+			0,
+			1,
+			0,
+			2,
+			0,
+			3,
+			0,
+			4,
+			0,
+			5,
+			0,
+			6,
+			0,
+			7,
+			1,
+			3,
+			2,
+			3,
+			3,
+			3,
+			4,
+			3,
+			5,
+			0,
+			5,
+			1,
+			5,
+			2,
+			5,
+			3,
+			5,
+			4,
+			5,
+			5,
+			5,
+			6,
+			5,
+			7
+		],
+		a: [
+			2,
+			0,
+			2,
+			1,
+			2,
+			2,
+			1,
+			2,
+			1,
+			3,
+			1,
+			4,
+			1,
+			5,
+			0,
+			5,
+			0,
+			6,
+			0,
+			7,
+			2,
+			5,
+			3,
+			0,
+			3,
+			1,
+			3,
+			2,
+			4,
+			2,
+			4,
+			3,
+			4,
+			4,
+			4,
+			1,
+			5,
+			5,
+			5,
+			6,
+			5,
+			7,
+			3,
+			5
+		],
+		v: [
+			0,
+			0,
+			0,
+			1,
+			0,
+			2,
+			0,
+			3,
+			0,
+			4,
+			0,
+			5,
+			0,
+			6,
+			0,
+			7,
+			1,
+			0,
+			2,
+			0,
+			3,
+			0,
+			4,
+			1,
+			5,
+			2,
+			4,
+			3,
+			3,
+			4,
+			2,
+			4,
+			1,
+			4
+		],
+		i: [
+			0,
+			0,
+			0,
+			1,
+			1,
+			1,
+			1,
+			2,
+			1,
+			3,
+			2,
+			3,
+			2,
+			4,
+			2,
+			5,
+			2,
+			6,
+			2,
+			7,
+			3,
+			2,
+			3,
+			3,
+			4,
+			1,
+			4,
+			2,
+			5,
+			0,
+			5,
+			1
+		],
+		e: [
+			0,
+			0,
+			0,
+			1,
+			0,
+			2,
+			0,
+			3,
+			0,
+			4,
+			0,
+			5,
+			0,
+			6,
+			0,
+			7,
+			1,
+			7,
+			2,
+			7,
+			3,
+			7,
+			4,
+			7,
+			5,
+			7
+		],
+		r: [
+			0,
+			0,
+			0,
+			1,
+			0,
+			2,
+			0,
+			3,
+			0,
+			4,
+			0,
+			5,
+			0,
+			6,
+			1,
+			7,
+			2,
+			7,
+			3,
+			7,
+			4,
+			7,
+			5,
+			0,
+			5,
+			1,
+			5,
+			2,
+			5,
+			3,
+			5,
+			4,
+			5,
+			5,
+			5,
+			6
+		],
+		s: [
+			0,
+			0,
+			0,
+			1,
+			0,
+			2,
+			0,
+			3,
+			0,
+			4,
+			0,
+			5,
+			0,
+			6,
+			0,
+			7,
+			1,
+			1,
+			1,
+			2,
+			2,
+			2,
+			2,
+			3,
+			2,
+			4,
+			3,
+			4,
+			3,
+			5,
+			4,
+			5,
+			4,
+			6,
+			5,
+			0,
+			5,
+			1,
+			5,
+			2,
+			5,
+			3,
+			5,
+			4,
+			5,
+			5,
+			5,
+			6,
+			5,
+			7
+		],
+		e: [
+			0,
+			0,
+			0,
+			1,
+			0,
+			2,
+			0,
+			3,
+			0,
+			4,
+			0,
+			5,
+			0,
+			6,
+			0,
+			7,
+			1,
+			0,
+			2,
+			0,
+			3,
+			0,
+			4,
+			0,
+			5,
+			0,
+			1,
+			3,
+			2,
+			3,
+			3,
+			3,
+			4,
+			3,
+			1,
+			7,
+			2,
+			7,
+			3,
+			7,
+			4,
+			7,
+			5,
+			7
+		],
+		r: [
+			0,
+			0,
+			0,
+			1,
+			0,
+			2,
+			0,
+			3,
+			0,
+			4,
+			0,
+			5,
+			1,
+			6,
+			2,
+			1,
+			2,
+			2,
+			2,
+			3,
+			2,
+			4,
+			2,
+			5,
+			2,
+			6,
+			2,
+			7,
+			3,
+			7,
+			5,
+			0,
+			5,
+			1,
+			5,
+			2,
+			5,
+			3,
+			5,
+			4,
+			5,
+			5,
+			4,
+			5,
+			4,
+			6
+		],
+		r: [
+			0,
+			0,
+			0,
+			1,
+			0,
+			2,
+			0,
+			3,
+			0,
+			4,
+			0,
+			5,
+			0,
+			6,
+			0,
+			7,
+			1,
+			0,
+			2,
+			0,
+			3,
+			0,
+			4,
+			1,
+			5,
+			2,
+			4,
+			3,
+			3,
+			4,
+			2,
+			4,
+			1,
+			4,
+			1,
+			5,
+			2,
+			5,
+			3,
+			6,
+			4,
+			6,
+			5,
+			7
+		],
+		a: [
+			0,
+			1,
+			0,
+			0,
+			1,
+			0,
+			2,
+			0,
+			3,
+			0,
+			4,
+			0,
+			5,
+			0,
+			5,
+			1,
+			5,
+			2,
+			5,
+			3,
+			4,
+			3,
+			3,
+			3,
+			2,
+			3,
+			2,
+			4,
+			1,
+			4,
+			1,
+			5,
+			0,
+			5,
+			0,
+			6,
+			0,
+			7,
+			1,
+			7,
+			2,
+			7,
+			3,
+			7,
+			4,
+			7,
+			5,
+			7,
+			5,
+			6
+		],
+		n: [
+			0,
+			1,
+			0,
+			2,
+			0,
+			3,
+			0,
+			4,
+			0,
+			5,
+			0,
+			6,
+			1,
+			0,
+			2,
+			0,
+			3,
+			0,
+			4,
+			0,
+			1,
+			7,
+			2,
+			7,
+			3,
+			7,
+			4,
+			7,
+			5,
+			1,
+			5,
+			2,
+			5,
+			3,
+			5,
+			4,
+			5,
+			5,
+			5,
+			6
+		],
+		o: [
+			1,
+			2,
+			2,
+			2,
+			2,
+			1,
+			3,
+			1,
+			3,
+			0,
+			4,
+			0,
+			4,
+			1,
+			4,
+			2,
+			4,
+			3,
+			4,
+			4,
+			4,
+			5,
+			4,
+			6,
+			4,
+			7,
+			1,
+			7,
+			2,
+			7,
+			3,
+			7,
+			5,
+			7
+		],
+		o: [
+			0,
+			0,
+			1,
+			0,
+			2,
+			0,
+			3,
+			0,
+			4,
+			0,
+			5,
+			0,
+			5,
+			1,
+			5,
+			2,
+			5,
+			3,
+			4,
+			3,
+			4,
+			4,
+			3,
+			4,
+			3,
+			5,
+			3,
+			6,
+			3,
+			7
+		]
+        
+	};
+
+	function initText() {
+		var i = textIndex;
+		var velocity = Math.random() * 0.25 + 1;
+		var shift = { x: -(Math.random() + 2), y: -(Math.random() + 3) };
+		var char = chars[textString[i]];
+		var width = 80;
+		var half = 6.5 * width;
+		var left = textMatrix[i * 2] * width - half;
+		var top = textMatrix[i * 2 + 1] * range * 1.2 - range * 2.4;
+		for (var j = 0; j < fireNumber * char.length * 0.25; j++) {
+			var rand = Math.floor(Math.random() * char.length * 0.5);
+			var x = char[rand * 2] + shift.x;
+			var y = char[rand * 2 + 1] + shift.y;
+			var text = {
+				x: center.x + left * 0.9,
+				y: center.y + top,
+				left: center.x + left,
+				size: Math.random() + 0.5,
+				fill: "#ff3",
+				vx: x * (velocity + (Math.random() - 0.5) * 0.5),
+				vy: y * (velocity + (Math.random() - 0.5) * 0.5),
+				ay: 0.08,
+				alpha: 1,
+				life: Math.round((Math.random() * range) / 2) + range / 1.5
+			};
+			text.base = {
+				life: text.life,
+				size: text.size
+			};
+			text.direct = (text.left - text.x) * 0.08;
+			listText.push(text);
+		}
+		// play sound
+		playExpSound();
+		//
+		lights.push({
+			x: center.x + left * 0.9,
+			y: center.y + top,
+			color: text.fill,
+			radius: range * 2
+		});
+		if (++textIndex < textString.length) {
+			setTimeout(initText, 10);
+		} else {
+			textIndex = 0;
+		}
+	}
+
+	function initSpark() {
+		var x = Math.random() * range * 3 - range * 1.5 + center.x;
+		var vx = Math.random() - 0.5;
+		var vy = -(Math.random() + 4);
+		var ax = Math.random() * 0.04 - 0.02;
+		var far = Math.random() * range * 4 - range + center.y;
+		var direct = ax * 10 * Math.PI;
+		var max = fireNumber * 0.5;
+		for (var i = 0; i < max; i++) {
+			var special = {
+				x: x,
+				y: Math.random() * range * 0.25 + canvas.height,
+				size: Math.random() + 2,
+				fill: "#ff3",
+				vx: vx,
+				vy: vy,
+				ax: ax,
+				direct: direct,
+				alpha: 1
+			};
+			special.far = far - (special.y - canvas.height);
+			listSpecial.push(special);
+			// play sound
+			playLaunchSound();
+		}
+	}
+
+	function randColor() {
+		var r = Math.floor(Math.random() * 256);
+		var g = Math.floor(Math.random() * 256);
+		var b = Math.floor(Math.random() * 256);
+		var color = "rgb($r, $g, $b)";
+		color = color.replace("$r", r);
+		color = color.replace("$g", g);
+		color = color.replace("$b", b);
+		return color;
+	}
+
+	function playExpSound() {
+		return undefined;
+		var sound = listExpSound[Math.floor(Math.random() * listExpSound.length)];
+		sound.volume = Math.random() * 0.4 + 0.1;
+		sound.play();
+	}
+
+	function playLaunchSound() {
+		return undefined;
+		setTimeout(function () {
+			var sound =
+				listLaunchSound[Math.floor(Math.random() * listLaunchSound.length)];
+			sound.volume = 0.05;
+			sound.play();
+		}, 200);
+	}
+
+	function makeCircleFirework(fire) {
+		var color = randColor();
+		var velocity = Math.random() * 2 + 6;
+		var max = fireNumber * 5;
+		for (var i = 0; i < max; i++) {
+			var rad = (i * Math.PI * 2) / max;
+			var firework = {
+				x: fire.x,
+				y: fire.y,
+				size: Math.random() + 1.5,
+				fill: color,
+				vx: Math.cos(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				vy: Math.sin(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				ay: 0.04,
+				alpha: 1,
+				life: Math.round((Math.random() * range) / 2) + range / 2
+			};
+			firework.base = {
+				life: firework.life,
+				size: firework.size
+			};
+			listFirework.push(firework);
+		}
+		return color;
+	}
+
+	function makeDoubleCircleFirework(fire) {
+		var color = randColor();
+		var velocity = Math.random() * 2 + 8;
+		var max = fireNumber * 3;
+		for (var i = 0; i < max; i++) {
+			var rad = (i * Math.PI * 2) / max;
+			var firework = {
+				x: fire.x,
+				y: fire.y,
+				size: Math.random() + 1.5,
+				fill: color,
+				vx: Math.cos(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				vy: Math.sin(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				ay: 0.04,
+				alpha: 1,
+				life: Math.round((Math.random() * range) / 2) + range / 1.5
+			};
+			firework.base = {
+				life: firework.life,
+				size: firework.size
+			};
+			listFirework.push(firework);
+		}
+		color = randColor();
+		velocity = Math.random() * 3 + 4;
+		for (var i = 0; i < max; i++) {
+			var rad = (i * Math.PI * 2) / max;
+			var firework = {
+				x: fire.x,
+				y: fire.y,
+				size: Math.random() + 1.5,
+				fill: color,
+				vx: Math.cos(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				vy: Math.sin(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				ay: 0.04,
+				alpha: 1,
+				life: Math.round((Math.random() * range) / 2) + range / 1.5
+			};
+			firework.base = {
+				life: firework.life,
+				size: firework.size
+			};
+			listFirework.push(firework);
+		}
+		return color;
+	}
+
+	function makePlanetCircleFirework(fire) {
+		var color = "#aa0609";
+		var velocity = Math.random() * 2 + 4;
+		var max = fireNumber * 2;
+		for (var i = 0; i < max; i++) {
+			var rad = (i * Math.PI * 2) / max;
+			var firework = {
+				x: fire.x,
+				y: fire.y,
+				size: Math.random() + 1.5,
+				fill: color,
+				vx: Math.cos(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				vy: Math.sin(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				ay: 0.04,
+				alpha: 1,
+				life: Math.round((Math.random() * range) / 2) + range / 1.5
+			};
+			firework.base = {
+				life: firework.life,
+				size: firework.size
+			};
+			listFirework.push(firework);
+		}
+		max = fireNumber * 4;
+		for (var i = 0; i < max; i++) {
+			var rad = (i * Math.PI * 2) / max;
+			var firework = {
+				x: fire.x,
+				y: fire.y,
+				size: Math.random() + 1.5,
+				fill: color,
+				vx: Math.cos(rad) * velocity * Math.random(),
+				vy: Math.sin(rad) * velocity * Math.random(),
+				ay: 0.04,
+				alpha: 1,
+				life: Math.round((Math.random() * range) / 2) + range / 1.5
+			};
+			firework.base = {
+				life: firework.life,
+				size: firework.size
+			};
+			listFirework.push(firework);
+		}
+		max = fireNumber * 3;
+		color = "#ff9";
+		var rotate = Math.random() * Math.PI * 2;
+		var vx = velocity * (Math.random() + 2);
+		var vy = velocity * 0.6;
+		for (var i = 0; i < max; i++) {
+			var rad = (i * Math.PI * 2) / max;
+			// calc x, y for ellipse
+			var cx = Math.cos(rad) * vx + (Math.random() - 0.5) * 0.5;
+			var cy = Math.sin(rad) * vy + (Math.random() - 0.5) * 0.5;
+			var firework = {
+				x: fire.x,
+				y: fire.y,
+				size: Math.random() + 1.5,
+				fill: color,
+				vx: cx * Math.cos(rotate) - cy * Math.sin(rotate), // rotate x ellipse
+				vy: cx * Math.sin(rotate) + cy * Math.cos(rotate), // rotate y ellipse
+				ay: 0.02,
+				alpha: 1,
+				life: Math.round((Math.random() * range) / 2) + range / 1.5
+			};
+			firework.base = {
+				life: firework.life,
+				size: firework.size
+			};
+			listFirework.push(firework);
+		}
+		return "#aa0609";
+	}
+
+	function makeFullCircleFirework(fire) {
+		var color = randColor();
+		var velocity = Math.random() * 8 + 8;
+		var max = fireNumber * 3;
+		for (var i = 0; i < max; i++) {
+			var rad = (i * Math.PI * 2) / max;
+			var firework = {
+				x: fire.x,
+				y: fire.y,
+				size: Math.random() + 1.5,
+				fill: color,
+				vx: Math.cos(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				vy: Math.sin(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				ay: 0.06,
+				alpha: 1,
+				life: Math.round((Math.random() * range) / 2) + range / 1.5
+			};
+			firework.base = {
+				life: firework.life,
+				size: firework.size
+			};
+			listFirework.push(firework);
+		}
+		max = fireNumber * Math.round(Math.random() * 4 + 4);
+		for (var i = 0; i < max; i++) {
+			var rad = (i * Math.PI * 2) / max;
+			var firework = {
+				x: fire.x,
+				y: fire.y,
+				size: Math.random() + 1.5,
+				fill: color,
+				vx: Math.cos(rad) * velocity * Math.random(),
+				vy: Math.sin(rad) * velocity * Math.random(),
+				ay: 0.06,
+				alpha: 1,
+				life: Math.round((Math.random() * range) / 2) + range / 1.5
+			};
+			firework.base = {
+				life: firework.life,
+				size: firework.size
+			};
+			listFirework.push(firework);
+		}
+		return color;
+	}
+
+	function makeDoubleFullCircleFirework(fire) {
+		var color = randColor();
+		var velocity = Math.random() * 8 + 8;
+		var max = fireNumber * 3;
+		for (var i = 0; i < max; i++) {
+			var rad = (i * Math.PI * 2) / max;
+			var firework = {
+				x: fire.x,
+				y: fire.y,
+				size: Math.random() + 1.5,
+				fill: color,
+				vx: Math.cos(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				vy: Math.sin(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				ay: 0.04,
+				alpha: 1,
+				life: Math.round((Math.random() * range) / 2) + range / 1.5
+			};
+			firework.base = {
+				life: firework.life,
+				size: firework.size
+			};
+			listFirework.push(firework);
+		}
+		color = randColor();
+		velocity = Math.random() * 3 + 4;
+		max = fireNumber * 2;
+		for (var i = 0; i < max; i++) {
+			var rad = (i * Math.PI * 2) / max;
+			var firework = {
+				x: fire.x,
+				y: fire.y,
+				size: Math.random() + 1.5,
+				fill: color,
+				vx: Math.cos(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				vy: Math.sin(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				ay: 0.06,
+				alpha: 1,
+				life: Math.round((Math.random() * range) / 2) + range / 1.5
+			};
+			firework.base = {
+				life: firework.life,
+				size: firework.size
+			};
+			listFirework.push(firework);
+		}
+		max = fireNumber * 4;
+		for (var i = 0; i < max; i++) {
+			var rad = (i * Math.PI * 2) / max;
+			var firework = {
+				x: fire.x,
+				y: fire.y,
+				size: Math.random() + 1.5,
+				fill: color,
+				vx: Math.cos(rad) * velocity * Math.random(),
+				vy: Math.sin(rad) * velocity * Math.random(),
+				ay: 0.06,
+				alpha: 1,
+				life: Math.round((Math.random() * range) / 2) + range / 1.5
+			};
+			firework.base = {
+				life: firework.life,
+				size: firework.size
+			};
+			listFirework.push(firework);
+		}
+		return color;
+	}
+
+	function makeHeartFirework(fire) {
+		var color = randColor();
+		var velocity = Math.random() * 3 + 3;
+		var max = fireNumber * 5;
+		var rotate = Math.random() * Math.PI * 2;
+		for (var i = 0; i < max; i++) {
+			var rad = (i * Math.PI * 2) / max + rotate;
+			var v, p;
+			if (rad - rotate < Math.PI * 0.5) {
+				p = (rad - rotate) / (Math.PI * 0.5);
+				v = velocity + velocity * p;
+			} else if (rad - rotate > Math.PI * 0.5 && rad - rotate < Math.PI) {
+				p = (rad - rotate - Math.PI * 0.5) / (Math.PI * 0.5);
+				v = velocity * (2 - p);
+			} else if (rad - rotate > Math.PI && rad - rotate < Math.PI * 1.5) {
+				p = (rad - rotate - Math.PI) / (Math.PI * 0.5);
+				v = velocity * (1 - p);
+			} else if (rad - rotate > Math.PI * 1.5 && rad - rotate < Math.PI * 2) {
+				p = (rad - rotate - Math.PI * 1.5) / (Math.PI * 0.5);
+				v = velocity * p;
+			} else {
+				v = velocity;
+			}
+			v = v + (Math.random() - 0.5) * 0.25;
+			var firework = {
+				x: fire.x,
+				y: fire.y,
+				size: Math.random() + 1.5,
+				fill: color,
+				vx: Math.cos(rad) * v,
+				vy: Math.sin(rad) * v,
+				ay: 0.02,
+				alpha: 1,
+				life: Math.round((Math.random() * range) / 2) + range / 1.5
+			};
+			firework.base = {
+				life: firework.life,
+				size: firework.size
+			};
+			listFirework.push(firework);
+		}
+		return color;
+	}
+
+	function makeRandomFirework(fire) {
+		var color = randColor();
+		for (var i = 0; i < fireNumber * 5; i++) {
+			var firework = {
+				x: fire.x,
+				y: fire.y,
+				size: Math.random() + 1.5,
+				fill: color,
+				vx: Math.random() * 15 - 7.5,
+				vy: Math.random() * -15 + 5,
+				ay: 0.05,
+				alpha: 1,
+				life: Math.round((Math.random() * range) / 2) + range / 2
+			};
+			firework.base = {
+				life: firework.life,
+				size: firework.size
+			};
+			listFirework.push(firework);
+		}
+		return color;
+	}
+
+	function makeSpark(special) {
+		var color = special.fill;
+		var velocity = Math.random() * 6 + 12;
+		var max = fireNumber;
+		for (var i = 0; i < max; i++) {
+			var rad =
+				Math.random() * Math.PI * 0.3 + Math.PI * 0.35 + Math.PI + special.direct;
+			var spark = {
+				x: special.x,
+				y: special.y,
+				size: Math.random() + 1,
+				fill: color,
+				vx: Math.cos(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				vy: Math.sin(rad) * velocity + (Math.random() - 0.5) * 0.5,
+				ay: 0.02,
+				alpha: 1,
+				rad: rad,
+				direct: special.direct,
+				chain: Math.round(Math.random() * 2) + 2,
+				life: Math.round((Math.random() * range) / 2) + range / 2
+			};
+			spark.base = {
+				life: spark.life,
+				velocity: velocity
+			};
+			listSpark.push(spark);
+		}
+		return color;
+	}
+
+	function chainSpark(parentSpark) {
+		var color = parentSpark.fill;
+		if (parentSpark.chain > 0) {
+			var velocity = parentSpark.base.velocity * 0.6;
+			var max = Math.round(Math.random() * 5);
+			for (var i = 0; i < max; i++) {
+				var rad =
+					Math.random() * Math.PI * 0.3 -
+					Math.PI * 0.15 +
+					parentSpark.rad +
+					parentSpark.direct;
+				var spark = {
+					x: parentSpark.x,
+					y: parentSpark.y,
+					size: parentSpark.size * 0.6,
+					fill: color,
+					vx: Math.cos(rad) * velocity + (Math.random() - 0.5) * 0.5,
+					vy: Math.sin(rad) * velocity + (Math.random() - 0.5) * 0.5,
+					ay: 0.02,
+					alpha: 1,
+					rad: rad,
+					direct: parentSpark.direct,
+					chain: parentSpark.chain,
+					life: parentSpark.base.life * 0.8
+				};
+				spark.base = {
+					life: spark.life,
+					size: spark.size,
+					velocity: velocity
+				};
+				listSpark.push(spark);
+			}
+
+			if (Math.random() > 0.9 && parentSpark.chain > 1) {
+				// play sound
+				playExpSound();
+			}
+		}
+		return color;
+	}
+
+  var animationSpeed =0.9; // Reducir a 50% de la velocidad normal
+  
+(function loop() {
+    setTimeout(() => {
+        requestAnimationFrame(loop);
+        update(animationSpeed);
+        draw();
+    }, 16); // Aproximadamente 60 FPS
+})();
+
+	function update() {
+		// update fire logic
+		for (var i = 0; i < listFire.length; i++) {
+			var fire = listFire[i];
+			//
+			if (fire.y <= fire.far) {
+				// play sound
+				playExpSound();
+				// case add firework
+				fired++;
+				var color = actions[Math.floor(Math.random() * actions.length)](fire);
+				// light
+				lights.push({ x: fire.x, y: fire.y, color: color, radius: range * 2 });
+				// reset
+				fire.y = fire.base.y;
+				fire.x = fire.base.x;
+				// special
+				if (fired % 33 == 0) {
+					initSpark();
+				}
+				// on hold
+				supprise = fired % 100 == 0 ? true : supprise;
+				if (supprise) {
+					fire.vx = 0;
+					fire.vy = 0;
+					fire.ax = 0;
+					fire.hold = true;
+					onHold++;
+				} else {
+					fire.vx = fire.base.vx;
+					fire.vy = fire.base.vy;
+					fire.ax = Math.random() * 0.06 - 0.03;
+					// play sound
+					playLaunchSound();
+				}
+			}
+			//
+			if (fire.hold && fire.delay <= 0) {
+				onHold--;
+				fire.hold = false;
+				fire.delay = Math.round(Math.random() * range) + range * 4;
+				fire.vx = fire.base.vx;
+				fire.vy = fire.base.vy;
+				fire.ax = Math.random() * 0.06 - 0.03;
+				fire.alpha = 1;
+				// play sound
+				playLaunchSound();
+			} else if (fire.hold && fire.delay > 0) {
+				fire.delay--;
+			} else {
+				fire.x += fire.vx;
+				fire.y += fire.vy;
+				fire.vx += fire.ax;
+				fire.alpha = (fire.y - fire.far) / fire.far;
+			}
+		}
+
+		// update firework logic
+		for (var i = listFirework.length - 1; i >= 0; i--) {
+			var firework = listFirework[i];
+			if (firework) {
+				firework.vx *= 0.9;
+				firework.vy *= 0.9;
+				firework.x += firework.vx;
+				firework.y += firework.vy;
+				firework.vy += firework.ay;
+				firework.alpha = firework.life / firework.base.life;
+				firework.size = firework.alpha * firework.base.size;
+				firework.alpha = firework.alpha > 0.6 ? 1 : firework.alpha;
+				//
+				firework.life--;
+				if (firework.life <= 0) {
+					listFirework.splice(i, 1);
+				}
+			}
+		}
+
+		// supprise javier serrano!
+		if (supprise && onHold == 10) {
+			supprise = false;
+			setTimeout(initText, 3000);
+		}
+
+		// update text logic
+		for (var i = listText.length - 1; i >= 0; i--) {
+			var text = listText[i];
+			text.vx *= 0.9;
+			text.vy *= 0.9;
+			text.direct *= 0.9;
+			text.x += text.vx + text.direct;
+			text.y += text.vy;
+			text.vy += text.ay;
+			text.alpha = text.life / text.base.life;
+			text.size = text.alpha * text.base.size;
+			text.alpha = text.alpha > 0.6 ? 1 : text.alpha;
+			//
+			text.life--;
+			if (text.life <= 0) {
+				listText.splice(i, 1);
+			}
+		}
+
+		// update special logic
+		for (var i = listSpecial.length - 1; i >= 0; i--) {
+			var special = listSpecial[i];
+			if (special.y <= special.far) {
+				// play sound
+				playExpSound();
+				// light
+				lights.push({
+					x: special.x,
+					y: special.y,
+					color: special.fill,
+					alpha: 0.02,
+					radius: range * 2
+				});
+				//
+				makeSpark(special);
+				// remove from list
+				listSpecial.splice(i, 1);
+			} else {
+				special.x += special.vx;
+				special.y += special.vy;
+				special.vx += special.ax;
+				special.alpha = (special.y - special.far) / special.far;
+			}
+		}
+
+		// update spark logic
+		for (var i = listSpark.length - 1; i >= 0; i--) {
+			var spark = listSpark[i];
+			if (spark) {
+				spark.vx *= 0.9;
+				spark.vy *= 0.9;
+				spark.x += spark.vx;
+				spark.y += spark.vy;
+				spark.vy += spark.ay;
+				spark.alpha = spark.life / spark.base.life + 0.2;
+				//
+				spark.life--;
+				if (spark.life < spark.base.life * 0.8 && spark.life > 0) {
+					//
+					spark.chain--;
+					chainSpark(spark);
+				}
+				if (spark.life <= 0) {
+					listSpark.splice(i, 1);
+				}
+			}
+		}
+	}
+
+	function draw() {
+		// clear
+		ctx.globalCompositeOperation = "source-over";
+		ctx.globalAlpha = 0.2;
+		ctx.fillStyle = "#000020";
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+		// re-draw
+		ctx.globalCompositeOperation = "screen";
+		for (var i = 0; i < listFire.length; i++) {
+			var fire = listFire[i];
+			ctx.globalAlpha = fire.alpha;
+			ctx.beginPath();
+			ctx.arc(fire.x, fire.y, fire.size, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fillStyle = fire.fill;
+			ctx.fill();
+		}
+
+		for (var i = 0; i < listFirework.length; i++) {
+			var firework = listFirework[i];
+			ctx.globalAlpha = firework.alpha;
+			ctx.beginPath();
+			ctx.arc(firework.x, firework.y, firework.size, 0, Math.PI * 2);
+			ctx.closePath();
+			ctx.fillStyle = firework.fill;
+			ctx.fill();
+		}
+
+		for (var i = 0; i < listSpecial.length; i++) {
+			var special = listSpecial[i];
+			ctx.globalAlpha = special.alpha;
+			// ctx.beginPath();
+			// ctx.arc(special.x, special.y, special.size, 0, Math.PI * 2);
+			// ctx.closePath();
+			// ctx.fill();
+			ctx.fillStyle = special.fill;
+			ctx.fillRect(
+				special.x - special.size,
+				special.y - special.size,
+				special.size * 2,
+				special.size * 2
+			);
+		}
+
+		for (var i = 0; i < listSpark.length; i++) {
+			var spark = listSpark[i];
+			ctx.globalAlpha = spark.alpha;
+			// ctx.beginPath();
+			// ctx.arc(spark.x, spark.y, spark.size, 0, Math.PI * 2);
+			// ctx.closePath();
+			// ctx.fill();
+			ctx.fillStyle = spark.fill;
+			ctx.fillRect(
+				spark.x - spark.size,
+				spark.y - spark.size,
+				spark.size * 2,
+				spark.size * 2
+			);
+		}
+
+		// light effect
+		while (lights.length) {
+			var light = lights.pop();
+			var gradient = ctx.createRadialGradient(
+				light.x,
+				light.y,
+				0,
+				light.x,
+				light.y,
+				light.radius
+			);
+			gradient.addColorStop(0, "#fff");
+			gradient.addColorStop(0.2, light.color);
+			gradient.addColorStop(0.8, "rgba(0, 0, 0, 0)");
+			gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+			ctx.globalAlpha = light.alpha ? light.alpha : 0.25;
+			ctx.fillStyle = gradient;
+			ctx.fillRect(
+				light.x - light.radius,
+				light.y - light.radius,
+				light.radius * 2,
+				light.radius * 2
+			);
+		}
+
+		// supprise: JAVIER SERRANO!
+		for (var i = 0; i < listText.length; i++) {
+			var text = listText[i];
+			ctx.globalAlpha = text.alpha;
+			ctx.fillStyle = text.fill;
+			ctx.fillRect(
+				text.x - text.size,
+				text.y - text.size,
+				text.size * 2,
+				text.size * 2
+			);
+		}
+	}
+});
+    /* ----------------- util dom ----------------- */
+    const toggleBtn = document.getElementById('toggleBtn');
+    const playBtn = document.getElementById('playBtn');
+    const confettiBtn = document.getElementById('confettiBtn');
+    const candlesRow = document.getElementById('candles');
+    const cake = document.getElementById('cake');
+    const uploadAudio = document.getElementById('uploadAudio');
+    const showMsg = document.getElementById('showMsg');
+    const msgBox = document.getElementById('msg');
+
+    /* ----------------- Copy link quick helper ----------------- */
+    
+
+    /* ----------------- Candle toggle & extinguish effect ----------------- */
+    let lit = true;
+    toggleBtn.addEventListener('click', ()=> {
+      if(lit){
+        // apagar: generar puffs y animar
+        extinguishAll();
+        toggleBtn.textContent = '🔥 Encender velas';
+      } else {
+        lightAll();
+        toggleBtn.textContent = '🕯️ Apagar velas';
+      }
+      lit = !lit;
+    });
+
+    function extinguishAll(){
+      const flames = candlesRow.querySelectorAll('.flame');
+      flames.forEach((f, idx) => {
+        // puff positions relative to candle
+        const rect = f.getBoundingClientRect();
+        createPuff(rect.left + rect.width/2, rect.top + rect.height/2);
+        // hide flame after short delay
+        setTimeout(()=> f.style.display = 'none', 120);
+      });
+    }
+    function lightAll(){
+      const flames = candlesRow.querySelectorAll('.flame');
+      flames.forEach(f => {
+        f.style.display = 'block';
+      });
+    }
+
+    function createPuff(x, y){
+      // create smoke element at screen coords, animate to fade
+      const s = document.createElement('div');
+      s.className = 'smoke';
+      document.body.appendChild(s);
+      // place absolute
+      s.style.left = (x - 12) + 'px';
+      s.style.top = (y - 6) + 'px';
+      // remove after animation done
+      setTimeout(()=> s.remove(), 1200);
+      // also small particle burst
+      for(let i=0;i<8;i++){
+        createSpark(x,y);
+      }
+    }
+    function createSpark(x,y){
+      const sp = document.createElement('div');
+      sp.style.position='absolute';
+      sp.style.width='6px';
+      sp.style.height='6px';
+      sp.style.background='rgba(200,180,180,0.9)';
+      sp.style.borderRadius='50%';
+      sp.style.left = (x - 3) + 'px';
+      sp.style.top = (y - 3) + 'px';
+      sp.style.pointerEvents='none';
+      document.body.appendChild(sp);
+      const ang = Math.random()*Math.PI*2;
+      const dist = 20 + Math.random()*40;
+      const nx = Math.cos(ang)*dist;
+      const ny = Math.sin(ang)*dist - 10;
+      sp.animate([
+        { transform: 'translate(0,0) scale(1)', opacity:1 },
+        { transform: `translate(${nx}px, ${-dist}px) scale(.6)`, opacity:0 }
+      ], { duration: 700 + Math.random()*400, easing: 'cubic-bezier(.2,.8,.2,1)'});
+      setTimeout(()=> sp.remove(), 1200);
+    }
+
+    /* ----------------- Confetti (canvas) ----------------- */
+    const confCanvas = document.getElementById('confettiCanvas');
+    const ctx = confCanvas.getContext('2d');
+    confCanvas.width = window.innerWidth;
+    confCanvas.height = window.innerHeight;
+    window.addEventListener('resize', ()=>{
+      confCanvas.width = window.innerWidth;
+      confCanvas.height = window.innerHeight;
+    });
+    const confettiPieces = [];
+    function launchConfetti(count=140){
+      // spawn pieces
+      for(let i=0;i<count;i++){
+        confettiPieces.push({
+          x: Math.random()*confCanvas.width,
+          y: -20 - Math.random()*150,
+          vx: (Math.random()-0.5)*3,
+          vy: 2+Math.random()*5,
+          size: 6 + Math.random()*10,
+          rot: Math.random()*360,
+          vr: (Math.random()-0.5)*8,
+          color: ['#ff6b6b','#ffd166','#6ee7b7','#8ec5ff','#d29bff'][Math.floor(Math.random()*5)]
+        });
+      }
+      if(!animating) animateConfetti();
+    }
+    function drawConfetti(){
+      ctx.clearRect(0,0,confCanvas.width,confCanvas.height);
+      for(let p of confettiPieces){
+        ctx.save();
+        ctx.translate(p.x,p.y);
+        ctx.rotate(p.rot*Math.PI/180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.6);
+        ctx.restore();
+      }
+    }
+    function stepConfetti(){
+      for(let i=confettiPieces.length-1;i>=0;i--){
+        const p = confettiPieces[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.vr;
+        p.vy += 0.03;
+        if(p.y > confCanvas.height + 100) confettiPieces.splice(i,1);
+      }
+    }
+    let animating=false;
+    function animateConfetti(){
+      animating=true;
+      if(confettiPieces.length===0){
+        animating=false;
+        ctx.clearRect(0,0,confCanvas.width,confCanvas.height);
+        return;
+      }
+      stepConfetti();
+      drawConfetti();
+      requestAnimationFrame(animateConfetti);
+    }
+    confettiBtn.addEventListener('click', ()=> launchConfetti(160));
+
+    /* ----------------- WebAudio synth (playlist-like retro tune) ----------------- */
+    let audioCtx = null;
+    let masterGain = null;
+    let synthNodes = [];
+    let isPlaying = false;
+    let userBuffer = null;
+
+    // small data: sequence of notes (midi numbers) for a chiptune-ish loop
+ const seq = [
+  {note:72, dur:.28}, {note:72, dur:.28}, {note:74, dur:.56}, {note:72, dur:.56}, {note:77, dur:.56}, {note:76, dur:1.2},
+  {note:72, dur:.28}, {note:72, dur:.28}, {note:74, dur:.56}, {note:72, dur:.56}, {note:79, dur:.56}, {note:77, dur:1.2},
+  {note:72, dur:.28}, {note:72, dur:.28}, {note:84, dur:.56}, {note:81, dur:.56}, {note:77, dur:.56}, {note:76, dur:.56}, {note:74, dur:1.2},
+  {note:82, dur:.28}, {note:82, dur:.28}, {note:81, dur:.56}, {note:77, dur:.56}, {note:79, dur:.56}, {note:77, dur:1.2}
+];
+
+
+
+
+    function mkAudioIfNeeded(){
+      if(!audioCtx){
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        masterGain = audioCtx.createGain();
+        masterGain.gain.value = 0.9;
+        masterGain.connect(audioCtx.destination);
+      }
+    }
+
+    function midiToFreq(m){ return 440 * Math.pow(2,(m-69)/12); }
+
+    // simple square-ish chiptone generator (using PWM-ish with two oscillators)
+    function playSynthLoop(){
+      mkAudioIfNeeded();
+      stopSynthLoop();
+      isPlaying = true;
+      let t = audioCtx.currentTime + 0.05;
+      const loopLen = seq.reduce((s,n)=> s + n.dur, 0);
+      // schedule 2 octaves of melody layered
+      const scheduleOnce = (startTime) => {
+        for(let octave=0; octave<2; octave++){
+          let timeCursor = startTime;
+          for(let s of seq){
+            const osc = audioCtx.createOscillator();
+            const osc2 = audioCtx.createOscillator();
+            const g = audioCtx.createGain();
+            const filter = audioCtx.createBiquadFilter();
+            // waveform + slight detune for that chippy feel
+            osc.type = 'square'; osc.frequency.value = midiToFreq(s.note - (octave*12));
+            osc2.type = 'sawtooth'; osc2.frequency.value = midiToFreq(s.note - (octave*12)) * 0.997;
+            osc.detune.value = (Math.random()-0.5)*10;
+            osc2.detune.value = (Math.random()-0.5)*10;
+            filter.type = 'lowpass'; filter.frequency.value = 3200 - octave*800;
+            g.gain.setValueAtTime(0.0, timeCursor);
+            g.gain.linearRampToValueAtTime(0.12, timeCursor + 0.02);
+            g.gain.exponentialRampToValueAtTime(0.0001, timeCursor + s.dur - 0.02);
+            osc.connect(filter);
+            osc2.connect(filter);
+            filter.connect(g);
+            g.connect(masterGain);
+
+            osc.start(timeCursor);
+            osc2.start(timeCursor);
+            osc.stop(timeCursor + s.dur);
+            osc2.stop(timeCursor + s.dur);
+            synthNodes.push({osc,osc2,g,filter});
+            timeCursor += s.dur;
+          }
+        }
+        // schedule next loop
+        const nextTime = startTime + loopLen;
+        // use setTimeout to re-invoke (keeps scheduling stable)
+        const waitMs = (nextTime - audioCtx.currentTime - 0.05) * 1000;
+        if(isPlaying){
+          setTimeout(()=> scheduleOnce(nextTime), Math.max(1, waitMs));
+        }
+      };
+      scheduleOnce(t);
+    }
+
+    function stopSynthLoop(){
+      isPlaying = false;
+      // stop & disconnect any lingering nodes
+      synthNodes.forEach(n=>{
+        try{ n.osc && n.osc.stop(); n.osc2 && n.osc2.stop(); } catch(e){}
+        try{ n.g && n.g.disconnect(); n.filter && n.filter.disconnect(); } catch(e){}
+      });
+      synthNodes = [];
+    }
+
+    // Play/Pause button handler
+    playBtn.addEventListener('click', async () => {
+      // if user uploaded an audio Buffer, prefer playing that
+      if(userBuffer){
+        mkAudioIfNeeded();
+        if(!audioCtx) return;
+        if(isPlaying){
+          // stop all playback
+          audioCtx.close().then(()=> {
+            audioCtx = null; masterGain = null; isPlaying=false;
+            playBtn.textContent = '▶️ Reproducir rola retro';
+          });
+        } else {
+          mkAudioIfNeeded();
+          const s = audioCtx.createBufferSource();
+          s.buffer = userBuffer;
+          s.connect(masterGain);
+          s.start();
+          isPlaying = true;
+          playBtn.textContent = '⏸️ Pausar';
+          s.onended = ()=> { isPlaying=false; playBtn.textContent='▶️ Reproducir rola retro'; };
+        }
+        return;
+      }
+
+      // fallback: synth
+      if(!isPlaying){
+        // resume audio context on user gesture (required by browsers)
+        mkAudioIfNeeded();
+        if(audioCtx.state === 'suspended') await audioCtx.resume();
+        playSynthLoop();
+        playBtn.textContent = '⏸️ Pausar';
+      } else {
+        stopSynthLoop();
+        playBtn.textContent = '▶️ Reproducir rola retro';
+      }
+    });
+
+    // handle local audio upload
+    uploadAudio.addEventListener('change', (e)=>{
+      const file = e.target.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev)=>{
+        const ab = ev.target.result;
+        mkAudioIfNeeded();
+        audioCtx.decodeAudioData(ab).then(buf=>{
+          userBuffer = buf;
+          // if currently playing synth, stop it
+          stopSynthLoop();
+          playBtn.textContent = '▶️ Reproducir (archivo cargado)';
+          alert('Archivo cargado: ahora al presionar Reproducir sonará tu MP3.');
+        }).catch(err=>{
+          alert('No se pudo decodificar el audio. Intenta con otro archivo.');
+        });
+      };
+      reader.readAsArrayBuffer(file);
+    });
+
+
+    /* ----------------- show message effect (toast) ----------------- */
+    showMsg.addEventListener('click', ()=>{
+      const txt = msgBox.value || '¡Feliz cumpleaños!';
+      // small floating toast in center
+      const t = document.createElement('div');
+      t.textContent = txt;
+      t.style.position='fixed';
+      t.style.left='50%';
+      t.style.top='18%';
+      t.style.transform='translateX(-50%)';
+      t.style.background='linear-gradient(90deg,#fff6d6,#ffd6e0)';
+      t.style.color='#2b1b12';
+      t.style.padding='14px 22px';
+      t.style.borderRadius='12px';
+      t.style.boxShadow='0 10px 30px rgba(40,40,60,0.12)';
+      t.style.zIndex=9999;
+      t.style.fontWeight=700;
+      document.body.appendChild(t);
+      // small confetti burst
+      launchConfetti(60);
+      setTimeout(()=> t.animate([{opacity:1, transform:'translateX(-50%) scale(1)'},{opacity:0, transform:'translateX(-50%) scale(.8)'}], {duration:900, easing:'ease'}) ,1200);
+      setTimeout(()=> t.remove(), 2000);
+    });
+
+    /* ----------------- Easter: click cake to wobble & flash lights ----------------- */
+    cake.addEventListener('click', ()=>{
+      cake.animate([
+        { transform: 'rotateX(12deg) rotateY(-12deg) translateY(0) scale(1)' },
+        { transform: 'rotateX(6deg) rotateY(6deg) translateY(-6px) scale(1.03)' },
+        { transform: 'rotateX(12deg) rotateY(-12deg) translateY(0) scale(1)' }
+      ], { duration: 450, easing: 'cubic-bezier(.2,.9,.2,1)' });
+      // little confetti + glow
+      launchConfetti(80);
+      const glow = cake.animate([
+        { boxShadow: '0 16px 30px rgba(40,40,70,0.12)' },
+        { boxShadow: '0 30px 70px rgba(255,160,60,0.28)' },
+        { boxShadow: '0 16px 30px rgba(40,40,70,0.12)' }
+      ], { duration: 900 });
+    });
+
+    /* ----------------- small UX: stop audio when navigating away ----------------- */
+    window.addEventListener('pagehide', ()=> {
+      try{ stopSynthLoop(); audioCtx && audioCtx.close(); }catch(e){}
+    });
+
+    /* ----------------- small init: lift some flames randomly for life ----------------- */
+    setInterval(()=> {
+      const flames = document.querySelectorAll('.flame');
+      flames.forEach((f,i)=>{
+        if(Math.random()<0.25) f.animate([{transform:'scale(1)'},{transform:'scale(1.08) translateY(-2px)'}], { duration: 240 + Math.random()*220, direction:'alternate', iterations:1 });
+      });
+    }, 420);
+
+    // end script
+  </script>
+</body>
+</html>
